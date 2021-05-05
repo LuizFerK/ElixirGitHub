@@ -7,6 +7,8 @@ defmodule ElixirgithubWeb.Router do
 
   scope "/api", ElixirgithubWeb do
     pipe_through :api
+
+    get "/repos/:user", ReposController, :index
   end
 
   # Enables LiveDashboard only for development
