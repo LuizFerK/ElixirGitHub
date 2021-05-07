@@ -10,6 +10,8 @@ use Mix.Config
 config :elixirgithub,
   ecto_repos: [Elixirgithub.Repo]
 
+config :elixirgithub, Elixirgithub, get_repos_adapter: Elixirgithub.GetRepos
+
 # Configures the endpoint
 config :elixirgithub, ElixirgithubWeb.Endpoint,
   url: [host: "localhost"],

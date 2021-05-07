@@ -1,5 +1,5 @@
 defmodule Elixirgithub do
-  alias Elixirgithub.GetRepos
-
-  defdelegate get_repos(user), to: GetRepos, as: :call
+  defdelegate get_repos(user),
+    to: Application.fetch_env!(:elixirgithub, __MODULE__)[:get_repos_adapter],
+    as: :call
 end
