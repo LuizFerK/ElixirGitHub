@@ -3,6 +3,7 @@ defmodule ElixirgithubWeb.UsersControllerTest do
 
   alias Elixirgithub.User
   alias Elixirgithub.Users.Create
+  alias ElixirgithubWeb.Auth.Guardian
 
   describe "create/2" do
     test "when all params are valid, create the user", %{conn: conn} do
@@ -25,10 +26,13 @@ defmodule ElixirgithubWeb.UsersControllerTest do
   end
 
   describe "delete/2" do
-    setup do
-      {:ok, %User{id: user_id}} = Create.call(%{"password" => "123456"})
+    setup %{conn: conn} do
+      {:ok, %User{id: user_id} = user} = Create.call(%{"password" => "123456"})
 
-      {:ok, user_id: user_id}
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn, user_id: user_id}
     end
 
     test "when the given user exists, delete the user", %{conn: conn, user_id: user_id} do
@@ -51,10 +55,13 @@ defmodule ElixirgithubWeb.UsersControllerTest do
   end
 
   describe "update/2" do
-    setup do
-      {:ok, %User{id: user_id}} = Create.call(%{"password" => "123456"})
+    setup %{conn: conn} do
+      {:ok, %User{id: user_id} = user} = Create.call(%{"password" => "123456"})
 
-      {:ok, user_id: user_id}
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn, user_id: user_id}
     end
 
     test "when all params are valid, update the user", %{conn: conn, user_id: user_id} do

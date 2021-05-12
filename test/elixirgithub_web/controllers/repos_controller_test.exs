@@ -2,9 +2,20 @@ defmodule ElixirgithubWeb.ReposControllerTest do
   use ElixirgithubWeb.ConnCase, async: true
   import Mox
 
-  alias Elixirgithub.{Error, GetReposMock, Repository}
+  alias Elixirgithub.{Error, GetReposMock, Repository, User}
+  alias Elixirgithub.Users.Create
+  alias ElixirgithubWeb.Auth.Guardian
 
   describe "index/1" do
+    setup %{conn: conn} do
+      {:ok, %User{} = user} = Create.call(%{"password" => "123456"})
+
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn}
+    end
+
     test "when the user exists, return their repositories", %{conn: conn} do
       user = "LuizFerK"
 
