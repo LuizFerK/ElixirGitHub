@@ -10,6 +10,10 @@ use Mix.Config
 config :elixirgithub,
   ecto_repos: [Elixirgithub.Repo]
 
+config :elixirgithub, Elixirgithub.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 config :elixirgithub, Elixirgithub, get_repos_adapter: Elixirgithub.GetRepos
 
 # Configures the endpoint
