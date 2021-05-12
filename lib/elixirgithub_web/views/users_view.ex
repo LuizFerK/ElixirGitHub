@@ -3,7 +3,7 @@ defmodule ElixirgithubWeb.UsersView do
 
   alias Elixirgithub.User
 
-  def render("user.json", %{user: %User{} = user}), do: user
+  def render("user.json", %{user: %User{} = user, token: token}), do: %{user: user, token: token}
 
   def render("sign_in.json", %{token: token}), do: %{token: token}
 end

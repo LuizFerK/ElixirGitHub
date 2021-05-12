@@ -3,5 +3,7 @@ defmodule ElixirgithubWeb.ReposView do
 
   alias Elixirgithub.Repository
 
-  def render("repos.json", %{repos: [%Repository{} | _] = repos}), do: repos
+  def render("repos.json", %{repos: [%Repository{} | _] = repos, token: token}) do
+    %{token: token, repos: repos}
+  end
 end

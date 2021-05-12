@@ -7,10 +7,11 @@ defmodule ElixirgithubWeb.UsersController do
   action_fallback FallbackController
 
   def create(conn, params) do
-    with {:ok, %User{} = user} <- Elixirgithub.create_user(params) do
+    with {:ok, %User{} = user} <- Elixirgithub.create_user(params),
+         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
       conn
       |> put_status(:ok)
-      |> render("user.json", user: user)
+      |> render("user.json", user: user, token: token)
     end
   end
 
@@ -34,7 +35,7 @@ defmodule ElixirgithubWeb.UsersController do
     with {:ok, %User{} = user} <- Elixirgithub.update_user(params) do
       conn
       |> put_status(:ok)
-      |> render("user.json", user: user)
+      |> render("user.json", user: user, token: conn.private[:refreshed_token])
     end
   end
 end

@@ -7,6 +7,7 @@ defmodule ElixirgithubWeb.Router do
 
   pipeline :auth do
     plug ElixirgithubWeb.Auth.Pipeline
+    plug ElixirgithubWeb.Plugs.RefreshToken
   end
 
   scope "/api", ElixirgithubWeb do
