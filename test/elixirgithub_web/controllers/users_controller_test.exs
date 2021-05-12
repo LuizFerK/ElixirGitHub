@@ -12,7 +12,7 @@ defmodule ElixirgithubWeb.UsersControllerTest do
         |> post(Routes.users_path(conn, :create, %{"password" => "123456"}))
         |> json_response(:ok)
 
-      assert %{"id" => _} = response
+      assert %{"user" => %{"id" => _}, "token" => _} = response
     end
 
     test "when there is invalid params, returns an error", %{conn: conn} do
@@ -127,7 +127,7 @@ defmodule ElixirgithubWeb.UsersControllerTest do
         |> put(Routes.users_path(conn, :update, user_id, %{"password" => "12345678"}))
         |> json_response(:ok)
 
-      assert %{"id" => ^user_id} = response
+      assert %{"user" => %{"id" => ^user_id}, "token" => _} = response
     end
 
     test "when there are invalid params, returns an error", %{conn: conn, user_id: user_id} do

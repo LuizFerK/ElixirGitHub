@@ -44,25 +44,26 @@ defmodule ElixirgithubWeb.ReposControllerTest do
         |> get(Routes.repos_path(conn, :index, user))
         |> json_response(:ok)
 
-      expected_response = [
-        %{
-          "description" => nil,
-          "html_url" => "https://github.com/LuizFerK/AboutMe",
-          "id" => 277_408_587,
-          "name" => "AboutMe",
-          "stargazers_count" => 0
-        },
-        %{
-          "description" =>
-            "A JavaScript Node.js, React.js and ReactNative application that helps NGOs to find people to make donations in cases of need.",
-          "html_url" => "https://github.com/LuizFerK/BeTheHero",
-          "id" => 250_084_405,
-          "name" => "BeTheHero",
-          "stargazers_count" => 1
-        }
-      ]
-
-      assert response == expected_response
+      assert %{
+               "token" => _,
+               "repos" => [
+                 %{
+                   "description" => nil,
+                   "html_url" => "https://github.com/LuizFerK/AboutMe",
+                   "id" => 277_408_587,
+                   "name" => "AboutMe",
+                   "stargazers_count" => 0
+                 },
+                 %{
+                   "description" =>
+                     "A JavaScript Node.js, React.js and ReactNative application that helps NGOs to find people to make donations in cases of need.",
+                   "html_url" => "https://github.com/LuizFerK/BeTheHero",
+                   "id" => 250_084_405,
+                   "name" => "BeTheHero",
+                   "stargazers_count" => 1
+                 }
+               ]
+             } = response
     end
 
     test "when the user does not exists, returns an error", %{conn: conn} do
