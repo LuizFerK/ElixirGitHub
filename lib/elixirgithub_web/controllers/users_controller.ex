@@ -2,7 +2,7 @@ defmodule ElixirgithubWeb.UsersController do
   use ElixirgithubWeb, :controller
 
   alias Elixirgithub.User
-  alias ElixirgithubWeb.FallbackController
+  alias ElixirgithubWeb.{Auth.Guardian, FallbackController}
 
   action_fallback FallbackController
 
@@ -19,6 +19,14 @@ defmodule ElixirgithubWeb.UsersController do
       conn
       |> put_status(:no_content)
       |> text("")
+    end
+  end
+
+  def sign_in(conn, params) do
+    with {:ok, token} <- Guardian.authenticate(params) do
+      conn
+      |> put_status(:ok)
+      |> render("sign_in.json", token: token)
     end
   end
 

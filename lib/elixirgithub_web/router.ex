@@ -5,11 +5,22 @@ defmodule ElixirgithubWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug ElixirgithubWeb.Auth.Pipeline
+  end
+
+  scope "/api", ElixirgithubWeb do
+    pipe_through [:api, :auth]
+
+    get "/repos/:user", ReposController, :index
+    resources "/users", UsersController, except: [:new, :edit, :create]
+  end
+
   scope "/api", ElixirgithubWeb do
     pipe_through :api
 
-    get "/repos/:user", ReposController, :index
-    resources "/users", UsersController, except: [:new, :edit]
+    post "/users/signin", UsersController, :sign_in
+    post "/users", UsersController, :create
   end
 
   # Enables LiveDashboard only for development

@@ -16,6 +16,14 @@ config :elixirgithub, Elixirgithub.Repo,
 
 config :elixirgithub, Elixirgithub, get_repos_adapter: Elixirgithub.GetRepos
 
+config :elixirgithub, ElixirgithubWeb.Auth.Guardian,
+  issuer: "elixirgithub",
+  secret_key: "RU23n26xeQu/RoI//mJ94weJ7bccJuOogqy068oBVgX1NPEUhU8PAKpryU+VGgP+"
+
+config :elixirgithub, ElixirgithubWeb.Auth.Pipeline,
+  module: ElixirgithubWeb.Auth.Guardian,
+  error_handler: ElixirgithubWeb.Auth.ErrorHandler
+
 # Configures the endpoint
 config :elixirgithub, ElixirgithubWeb.Endpoint,
   url: [host: "localhost"],
