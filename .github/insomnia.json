@@ -1,0 +1,218 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-05-21T01:56:50.704Z",
+  "__export_source": "insomnia.desktop.app:v2021.3.0",
+  "resources": [
+    {
+      "_id": "req_e088c9c1984b4b9eb8b970553f79d74d",
+      "parentId": "fld_42c3c758e0994c43b9472856d3d66afc",
+      "modified": 1620782284889,
+      "created": 1620779542604,
+      "url": "{{ _.baseUrl }}/users/signin",
+      "name": "SignIn",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"id\": \"21871f8a-4a24-41d7-a6ce-1531c7939857\",\n\t\"password\": \"12345678\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a21cb4911e264b85b2ff18ea50960de5"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1620779542604,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_42c3c758e0994c43b9472856d3d66afc",
+      "parentId": "wrk_36d55381ba9d4ec4b37c43964a062ee3",
+      "modified": 1620779085160,
+      "created": 1620779085160,
+      "name": "Users",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1620779085160,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_36d55381ba9d4ec4b37c43964a062ee3",
+      "parentId": null,
+      "modified": 1621562169941,
+      "created": 1620246026277,
+      "name": "Repositoriex",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_66be8147c7424cc4ba27eab42e1c1c57",
+      "parentId": "fld_42c3c758e0994c43b9472856d3d66afc",
+      "modified": 1620779394547,
+      "created": 1620779089398,
+      "url": "{{ _.baseUrl }}/users",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"password\": \"123456\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_a29616c8f7694d47b951f31d2595ce4f"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1620779383127,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_253e16f921a643238816e900555a6f4d",
+      "parentId": "fld_42c3c758e0994c43b9472856d3d66afc",
+      "modified": 1620779408392,
+      "created": 1620779383077,
+      "url": "{{ _.baseUrl }}/users/0b6aaa27-f207-4574-a9bf-9cafe773b800",
+      "name": "Delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1620779383077,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1c12a8a9335d46c48184461ed7b6b31f",
+      "parentId": "fld_42c3c758e0994c43b9472856d3d66afc",
+      "modified": 1620797768463,
+      "created": 1620779428460,
+      "url": "{{ _.baseUrl }}/users/21871f8a-4a24-41d7-a6ce-1531c7939857",
+      "name": "Update",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"password\": \"12345678\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_1551871796434e409f8b4ab6774be4a9"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1620779383027,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_07e3555c96164a58b720a897bfecae2f",
+      "parentId": "wrk_36d55381ba9d4ec4b37c43964a062ee3",
+      "modified": 1620782311239,
+      "created": 1620246031815,
+      "url": "{{ _.baseUrl }}/repos/LuizFerK",
+      "name": "Get Repos",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1620246031815,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_d3db56a8dc2cd14f53157f841664f62b9e1f405c",
+      "parentId": "wrk_36d55381ba9d4ec4b37c43964a062ee3",
+      "modified": 1620798419585,
+      "created": 1620246026577,
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "http://localhost:4000/api",
+        "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJlbGl4aXJnaXRodWIiLCJleHAiOjE2MjA3OTg0NzAsImlhdCI6MTYyMDc5ODQxMCwiaXNzIjoiZWxpeGlyZ2l0aHViIiwianRpIjoiMTYyNDU5YmYtZDAwMi00MzVhLWJjNmEtYWRlOTZlOTJjMmViIiwibmJmIjoxNjIwNzk4NDA5LCJzdWIiOiIyMTg3MWY4YS00YTI0LTQxZDctYTZjZS0xNTMxYzc5Mzk4NTciLCJ0eXAiOiJhY2Nlc3MifQ.S-HdlbqT9iGfLyjCeNVtD4EwGHnHJ9w2WsX_7ss_vTtCe4kSIIC02iLeAfIT9saWLn6HCrcH3RVqycGaPaUiAA"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl",
+          "token"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1620246026577,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_d3db56a8dc2cd14f53157f841664f62b9e1f405c",
+      "parentId": "wrk_36d55381ba9d4ec4b37c43964a062ee3",
+      "modified": 1620246026582,
+      "created": 1620246026582,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_573b60d712f942de84fe1dabd8d96984",
+      "parentId": "wrk_36d55381ba9d4ec4b37c43964a062ee3",
+      "modified": 1620246026284,
+      "created": 1620246026284,
+      "fileName": "Elixir GitHub",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}
